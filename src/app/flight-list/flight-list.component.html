@@ -1,0 +1,83 @@
+<hr />
+<hr />
+<form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Flight Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationCustom01"
+        value="2005"
+        required
+      />
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Departure</label>
+      <fieldset disabled>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom02"
+          value="2018-01-31"
+          required
+        />
+      </fieldset>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<hr />
+<hr />
+<h3>Flight List</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">flightNumber</th>
+      <th scope="col">carrier</th>
+      <th scope="col">origin</th>
+      <th scope="col">departure</th>
+      <th scope="col">destination</th>
+      <th scope="col">arrival</th>
+      <th scope="col">aircraft</th>
+      <th scope="col">distance</th>
+      <th scope="col">travelTime</th>
+      <th scope="col">status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of flights">
+      <th scope="row">{{ flight.flightNumber }}</th>
+      <td>
+        {{ flight.carrier }}
+      </td>
+      <td>
+        {{ flight.origin }}
+      </td>
+      <td>
+        {{ flight.departure }}
+      </td>
+      <td>
+        {{ flight.destination }}
+      </td>
+      <td>
+        {{ flight.arrival }}
+      </td>
+      <td>
+        {{ flight.aircraft }}
+      </td>
+      <td>
+        {{ flight.distance }}
+      </td>
+      <td>
+        {{ flight.travelTime }}
+      </td>
+      <td>
+        {{ flight.status }}
+      </td>
+    </tr>
+  </tbody>
+</table>
