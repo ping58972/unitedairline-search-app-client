@@ -10,4 +10,10 @@ export class FlightService {
   getAll(): Observable<any> {
     return this.http.get("//localhost:8088/search");
   }
+  getByFlightNumber(id: Number): Observable<any> {
+    return this.http.get(`//localhost:8088/search/${id}`);
+  }
+  getByDepartureDate(date: Date): Observable<any> {
+    return this.http.get(`//localhost:8088/search/date/${date}`);
+  }
 }

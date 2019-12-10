@@ -1,33 +1,36 @@
 <hr />
 <hr />
-<form class="needs-validation" novalidate>
+<form class="needs-validation" (ngSubmit)="getByFlightNumber(f)" #f="ngForm">
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">Flight Number</label>
       <input
         type="text"
         class="form-control"
-        id="validationCustom01"
         value="2005"
         required
+        ngModel
+        name="flightNumber"
       />
     </div>
 
     <div class="col-md-4 mb-3">
       <label for="validationCustom02">Departure</label>
-      <fieldset disabled>
-        <input
-          type="text"
-          class="form-control"
-          id="validationCustom02"
-          value="2018-01-31"
-          required
-        />
-      </fieldset>
+
+      <input
+        type="date"
+        class="form-control"
+        value="2018-01-31"
+        required
+        ngModel
+        name="departure"
+      />
     </div>
   </div>
 
-  <button class="btn btn-primary" type="submit">Search</button>
+  <button class="btn btn-primary" type="submit">
+    Search
+  </button>
 </form>
 <hr />
 <hr />
