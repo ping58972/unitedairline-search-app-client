@@ -18,18 +18,24 @@ export class FlightListComponent implements OnInit {
     });
   }
   getByFlightNumber(form: NgForm) {
-    this.flightService
-      .getByFlightNumber(form.value.flightNumber)
-      .subscribe(data => {
-        if (Array.isArray(data)) {
+    if (form.value.flightNumber) {
+      this.flightService
+        .getByFlightNumber(form.value.flightNumber)
+        .subscribe(data => {
+          if (Array.isArray(data)) {
+            this.flights = data;
+          } else {
+            this.flights = [data];
+          }
+        });
+    }
+    if (!form.value.flightNumber) {
+      this.flightService
+        .getByDepartureDate(form.value.departure)
+        .subscribe(data => {
           this.flights = data;
-        } else {
-          this.flights = [data];
-        }
-      });
-    this.flightService
-      .getByDepartureDate(form.value.departure)
-      .subscribe(date => {});
+        });
+    }
     console.log(form);
   }
   log(x: NgForm) {

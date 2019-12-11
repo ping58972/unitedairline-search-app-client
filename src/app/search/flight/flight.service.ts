@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, config } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -14,6 +14,17 @@ export class FlightService {
     return this.http.get(`//localhost:8088/search/${id}`);
   }
   getByDepartureDate(date: Date): Observable<any> {
-    return this.http.get(`//localhost:8088/search/date/${date}`);
+    let str = date.toString() + "T00:00:00";
+    // let strDate =
+    //   "" +
+    //   date.getFullYear().toString() +
+    //   "-" +
+    //   date.getMonth().toString() +
+    //   "-" +
+    //   date.getDate().toString() +
+    //   "T00:00:00";
+    let dateStr = { departure: str };
+    console.log(dateStr);
+    return this.http.post("//localhost:8088/search/date", dateStr);
   }
 }
